@@ -6,30 +6,82 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+  const [noCount, setNoCount] = useState(0);
+  const [yesPressed, setYesPressed] = useState(false);
+  const yesButtonSize = noCount * 20 + 16;
+
+  const [noPosition, setNoPosition] = useState({ top: "50%", left: "50%" });
+
+  const moveNoButton = () => {
+    const top = Math.random() * 80 + "%";
+    const left = Math.random() * 80 + "%";
+    setNoPosition({ top, left });
+  };
+
+  const handleNoClick = () => {
+    moveNoButton();
+    setNoCount(noCount + 1);
+  };
+
+  const getNoButtonText = () => {
+    const phrases = [
+      "No",
+      "Are you sure?",
+      "What if I asked really nicely?",
+      "Pretty please",
+      "Fr tho",
+      "Stop clicking no",
+      "fr",
+      "fr fr",
+      "I am going to die",
+      "Yep im dead",
+      "ok ur talking to Rasheed's ghost",
+      "Alright im haunting u now",
+      "Alright im not dead",
+      "Still tho",
+      "No beuno",
+      "Está bien??",
+    ];
+
+    return phrases[Math.min(noCount, phrases.length - 1)];
+  };
+
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="-mt-16 relative flex h-screen flex-col items-center justify-center">
+      {yesPressed ? (
+        <>
+          <img src="https://media.tenor.com/wfig9PYM-NYAAAAi/cool-meek-mill.gif" />
+          <div className="my-4 text-4xl font-bold">Thats wassup</div>
+        </>
+      ) : (
+        <>
+          <img
+            className="h-[200px]"
+            src="https://media.tenor.com/m5YbPD2d7bMAAAAm/serious-question-rich-benoit.webp"
+          />
+          <h1 className="my-4 text-4xl">Will you be my Valentine?</h1>
+
+          <div className="flex items-center">
+            <button
+              className="mr-4 rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700"
+              style={{ fontSize: yesButtonSize }}
+              onClick={() => setYesPressed(true)}
+            >
+              Yes
+            </button>
+          </div>
+
+          <button
+            onClick={handleNoClick}
+            className="absolute rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700 transition-all"
+            style={noPosition}
+          >
+            {noCount === 0 ? "No" : getNoButtonText()}
+          </button>
+        </>
+      )}
+    </div>
+  );
 }
 
 export default App
