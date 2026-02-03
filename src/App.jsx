@@ -21,26 +21,23 @@ function App() {
   const handleNoClick = () => {
     moveNoButton();
     setNoCount(noCount + 1);
+    if (noCount >= 9) {
+      setYesPressed(true);
+    }
   };
 
   const getNoButtonText = () => {
     const phrases = [
       "No",
       "Are you sure?",
-      "What if I asked really nicely?",
-      "Pretty please",
+      "Try again",
+      "Again",
+      "And again..",
       "Fr tho",
       "Stop clicking no",
-      "fr",
-      "fr fr",
-      "I am going to die",
-      "Yep im dead",
-      "ok ur talking to Rasheed's ghost",
-      "Alright im haunting u now",
-      "jk im not dead",
-      "Still tho",
       "No beuno",
       "Está bien??",
+      "Yes"
     ];
 
     return phrases[Math.min(noCount, phrases.length - 1)];
