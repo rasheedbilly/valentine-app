@@ -37,7 +37,7 @@ function App() {
       "Yep im dead",
       "ok ur talking to Rasheed's ghost",
       "Alright im haunting u now",
-      "Alright im not dead",
+      "jk im not dead",
       "Still tho",
       "No beuno",
       "Está bien??",
@@ -59,7 +59,7 @@ function App() {
             className="h-[200px]"
             src="https://media.tenor.com/m5YbPD2d7bMAAAAm/serious-question-rich-benoit.webp"
           />
-          <h1 className="my-4 text-4xl">Will you be my Valentine?</h1>
+          <h1 className="my-4 text-4xl">Will you be my Valentine Kayla?</h1>
 
           <div className="flex items-center">
             <button
